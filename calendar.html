@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="evo-calendar.min.css">
+    <link rel="stylesheet" href="evo-calendar.midnight-blue.min.css">
+    <link rel="stylesheet" href="evo-calendar.royal-navy.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="hero">
+      <div id="calendar"></div>
+      <div class="action-buttons">
+        <button class="btn-action" id="addBtn">ADD EVENT</button>
+        <button class="btn-action" id="removeBtn">REMOVE EVENT</button>
+        <a href="index.html" target="_blank">
+          <button class="btn-action" id="calendarbt">Regresar</button>
+        </a>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="evo-calendar.min.js">
+
+    </script>
+
+    <script>
+      $(document).ready(function() {
+        $('#calendar').evoCalendar({
+
+
+            theme: "Royal Navy",
+            language: "es",
+            calendarEvents: [
+            {
+              id: 'evento1', // Event's ID (required)
+              name: "Asesoria Tonito", // Event name (required)
+              date: "June/15/2023", // Event date (required)
+              description:"Zoom, amo las Rasp",
+              type: "work", // Event type (required)
+              everyYear: true // Same event every year (optional)
+            },
+            {
+              name: "Presentacion Final",
+              badge: "June/18/2023", // Event badge (optional)
+              date: ["June/17/2023", "June/18/2023"], // Date range
+              description: "Fecha No confirmada.", // Event description (optional)
+              type: "event",
+              color: "#FFE800" // Event custom color (optional)
+            }
+          ]
+
+        })
+      })
+      
+    </script>
+
+    <script>
+      $('#calendar').evoCalendar('addCalendarEvent');
+    </script>
+
+    <script>
+        $('#calendar').evoCalendar('removeCalendarEvent'); 
+    </script>
+
+  </body>
+</html>
