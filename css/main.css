@@ -50,6 +50,7 @@ body {
   top: 208px;
   left: 185px;
 }
+
 .v9_146 {
   width: 574px;
   height: 406px;
@@ -60,12 +61,15 @@ body {
   left: 55px;
   border-radius: 50%;
 }
-.name {
+
+/*.name {
   color: #fff;
 }
 .name {
   color: #fff;
 }
+*/
+
 .v6_5 {
   width: 228px;
   height: 259px;
@@ -114,8 +118,8 @@ body {
   color: #fff;
   border: none;
   background-color: #0017FF;
-  border-radius: 8px;
-  padding: 20px 30px;
+  border-radius: 1px;
+  padding: auto;
   font-size: 18px;
   cursor: pointer;
   border: 2px solid #fff;
@@ -125,25 +129,30 @@ body {
 }
 
 #map {
-  width: 200px;
-  height: 100px;
+  width: auto;
+  height: auto;
   position: absolute;
-  top: 65px;
+  top: 130px;
   left: 837px;
 }
 
 #foodbt {
-  width: 100px;
-  height: 100px;
+  width: auto;
+  height: auto;
   position: absolute;
-  top: 496px;
+  top: 520px;
   left: 1020px;
 }
 
 #calendarbt {
-  width: 200px;
-  height: 100px;
+  width: auto;
+  height: auto;
   position: absolute;
-  top: 244px;
+  top: 350px;
   left: 342px;
+}
+
+
+.btn-action, .btn-image {
+  outline: auto;
 }
