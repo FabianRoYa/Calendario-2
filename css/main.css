@@ -125,7 +125,6 @@ body {
   border: 2px solid #fff;
   -webkit-box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
   box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
-  
 }
 
 #map {
@@ -155,4 +154,5 @@ body {
 
 .btn-action, .btn-image {
   outline: auto;
+  border-radius: 5px;
 }

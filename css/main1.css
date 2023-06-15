@@ -1,8 +1,13 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   font-size: 14px;
+  margin: 0;
+  padding: 0;
+  background: url("../images1/mapacompleto.png") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .v9_169 {
@@ -15,11 +20,10 @@ body {
   left: 0px;
   overflow: hidden;
 }
-
 .v9_170 {
   width: 100%;
-  height: 768px;
-  background-image: url("../images/v9_170.png");
+  height: 100vh;
+  background: url("../images1/mapacompleto.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -56,6 +60,7 @@ body {
   font-size: 10px;
   opacity: 1;
   text-align: center;
+  background-color: transparent;
 }
 .v72_116 {
   width: 56px;
@@ -840,4 +845,28 @@ body {
   font-size: 10px;
   opacity: 1;
   text-align: center;
+}
+
+.btn-action {
+  font-family: 'Fira Mono', monospace;
+  color: #fff;
+  border: none;
+  background-color: #0017FF;
+  border-radius: 1px;
+  padding: auto;
+  font-size: 18px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  -webkit-box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
+  box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.miIframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
