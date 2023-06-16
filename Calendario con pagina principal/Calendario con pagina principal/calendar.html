@@ -1,0 +1,426 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="evo-calendar.min.css">
+    <link rel="stylesheet" href="evo-calendar.midnight-blue.min.css">
+    <link rel="stylesheet" href="evo-calendar.royal-navy.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800" rel="stylesheet">
+
+
+  </head>
+
+  <body>   
+    
+
+    <div class="hero"> 
+      <div class="container">      
+        <div class="centrado">
+          <h1 style="text-align: center;" >CALENDARIO</h1>
+          <button style="  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4); display: block; margin: 0 auto;" id="authorize_button" class="btn-action" onclick="handleAuthClick()">log in</button>
+        </div>
+      </div>
+
+      
+
+      <div id="calendar"></div>
+
+      <div class="action-buttons" style="position: absolute; z-index: 9999; display: none;">
+        <button style="background-color: rgb(87, 87, 202); color: white;" class="btn-action" id="addBtn" onclick="addEvent()">ADD EVENT</button>
+        <button style="background-color: rgb(87, 87, 202);color: white;" class="btn-action" id="removeBtn">REMOVE EVENT</button>
+        <button onclick="actualizarPagina()" style=" padding: 0px 0px; width: 150px;height: 50px;background-color: rgb(216, 53, 129);color: white;" class="btn-action" id="removeBtn">LOG OUT</button>
+      </div>       
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="evo-calendar.min.js">
+
+    </script>
+
+    <script>
+        function salir() {
+          var div = document.getElementById('divAddEven');
+  div.remove();
+  $("#addBtn").show();
+  $("#removeBtn").show();
+
+    }
+
+    function actualizarPagina() {
+      // go to the home page of the app
+      window.href = "https://fabianroya.github.io/Calendario-2/";
+    }
+       function addEvent(){
+        
+        $('.calendar-events').append(`
+        <div class="contenidoAddEven" id="divAddEven">
+            <button onclick="salir()" class="boton-superior-derecha">x</button>
+            <p class="title">Crear nuevo Evento</p>
+            <input type="text" name="" placeholder="Nombre del Evento" id="NOMBRE">
+            <input type="text" name="" placeholder="Descripción" id="DESCRIPCION">
+            <input type="email" name="" placeholder="Correo del Profesor" id="PROFE">
+            <p style="text-align: left;">Fecha de inicio</p>
+            <input type="datetime-local" id="fechaInput">
+            <p style="text-align: left;">Fecha Final</p>
+            <input type="datetime-local" id="fechaFinal">
+            <button class="save-btn" onclick="ObtValo()">Guardar</button>
+        </div>
+        `)      
+      $("#addBtn").hide();
+      $("#removeBtn").hide();
+
+    }
+      function ObtValo() {
+        var inputN = document.getElementById("NOMBRE");
+      var nom = inputN.value;
+      var inputD = document.getElementById("DESCRIPCION");
+      var Descr = inputD.value;
+      var inputP = document.getElementById("PROFE");
+      var prof = inputP.value;
+      var inputDate = document.getElementById("fechaInput");
+      var date = inputDate.value;
+      var inputDateF = document.getElementById("fechaFinal");
+      var dateF = inputDateF.value;
+      enviaraGoogle(nom,Descr,prof,date,dateF);
+      }
+      function enviaraGoogle(nombre,descripcion,prof,dateI,dateF){
+        // Refer to the JavaScript quickstart on how to setup the environment:
+// https://developers.google.com/calendar/quickstart/js
+// Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
+// stored credentials.
+console.log(dateI, new Date(dateI).toISOString());
+console.log(dateF, new Date(dateF).toISOString());
+
+const event = {
+  summary: nombre,
+  description: descripcion,
+  start: {
+    dateTime: new Date(dateI),
+    timeZone: 'America/Mexico_City'
+  },
+  attendees: [
+    {email:prof},
+    {email: prof}
+  ],
+  end: {
+    dateTime: new Date(dateF),
+    timeZone: 'America/Mexico_City'
+  }
+  
+};
+
+const request = gapi.client.calendar.events.insert({
+  'calendarId': 'primary',
+  'resource': event
+});
+
+request.execute(function(event) {
+  console.log('Event created: ' + event.htmlLink);
+  $("#calendar").evoCalendar('destroy');
+  listUpcomingEvents();
+  $("#addBtn").show();
+  $("#removeBtn").show();
+});
+       }
+    
+    </script>
+
+    <script>
+      function getDateRange(st, ed) {
+        const monthNames = ["January", "February", "March", "April", "May", "June","July", "August",
+                            "September", "October", "November", "December"];
+        const start = new Date(st);
+        const end = new Date(ed);
+        
+        return [`${monthNames[start.getMonth()]}/${start.getDate()}/${start.getFullYear()}`,
+                `${monthNames[end.getMonth()]}/${end.getDate()}/${end.getFullYear()}`];
+
+
+      }
+      
+      function populateCalendar(events) {
+        const evList = [];
+        events.forEach(elem => {
+          const dateRange = getDateRange(elem.start.date || elem.start.dateTime, elem.end.date || elem.end.dateTime);
+          let dte = elem.start.date || elem.start.dateTime
+          let attents = ''
+          if(elem.attendees){
+            elem.attendees.forEach(att => {
+              attents += '\n' + att.email 
+            })
+          }
+          const desc = elem.description || '';
+          const aux = {
+            id: elem.id, 
+            name: elem.summary,
+            date: dateRange,
+            description: 'Descripción: '+desc + '<br>Profesor: ' + attents + '<br> Hora: ' + new Date(dte).toISOString().split('.')[0].replace('T', ' '),
+            type: "work",
+            everyYear: true
+          }
+          evList.push(aux);
+        });
+        $('#calendar').evoCalendar({
+
+            theme: "Royal Navy",
+            language: "es",
+            calendarEvents: evList
+
+        })
+        $('.action-buttons').css('display', 'block')
+      }
+
+    </script>
+
+    <script>
+      $('#calendar').evoCalendar('addCalendarEvent');
+    </script>
+
+    <script>
+        $('#calendar').evoCalendar('removeCalendarEvent'); 
+    </script>
+
+    
+    <script type="text/javascript">
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const CLIENT_ID = '1028640791165-8dtvltad19u36oi87a88q2la3986r417.apps.googleusercontent.com';
+      const API_KEY = 'AIzaSyDDhFOrGzn49gFhzdqWRWp1dIicHjS-K_g';
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES = 'https://www.googleapis.com/auth/calendar';
+
+      let tokenClient;
+      let gapiInited = false;
+      let gisInited = false;
+
+      // document.getElementById('authorize_button').style.visibility = 'hidden';
+      // document.getElementById('signout_button').style.visibility = 'hidden';
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoaded() {
+        gapi.load('client', initializeGapiClient);
+      }
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function initializeGapiClient() {
+        await gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: [DISCOVERY_DOC],
+        });
+        gapiInited = true;
+        maybeEnableButtons();
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoaded() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CLIENT_ID,
+          scope: SCOPES,
+          callback: '', // defined later
+        });
+        gisInited = true;
+        maybeEnableButtons();
+      }
+
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtons() {
+        if (gapiInited && gisInited) {
+          document.getElementById('authorize_button').style.visibility = 'visible';
+          
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick() {
+        tokenClient.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          // document.getElementById('signout_button').style.visibility = 'visible';
+          document.getElementById('authorize_button').innerText = 'Refresh';
+          await listUpcomingEvents();
+          $("#authorize_button").hide();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClient.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick() {
+        const token = gapi.client.getToken();
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token);
+          gapi.client.setToken('');
+          document.getElementById('content').innerText = '';
+          document.getElementById('authorize_button').innerText = 'Authorize';
+          document.getElementById('signout_button').style.visibility = 'hidden';
+        }
+      }
+
+      /**
+       * Print the summary and start datetime/date of the next ten events in
+       * the authorized user's calendar. If no events are found an
+       * appropriate message is printed.
+       */
+      async function listUpcomingEvents() {
+        let response;
+        try {
+          const request = {
+            'calendarId': 'primary',
+            'timeMin': '2023-05-30T03:36:11.098Z',
+            'showDeleted': false,
+            'singleEvents': true,
+            'maxResults': 50,
+            'orderBy': 'startTime',
+          };
+          response = await gapi.client.calendar.events.list(request);
+        } catch (err) {
+        // document.getElementById('content').innerText = err.message;
+          return;
+        }
+
+        const events = response.result.items;
+        if (!events || events.length == 0) {
+          // document.getElementById('content').innerText = 'No events found.';
+          populateCalendar(events);
+          return;
+        }
+        console.log(events);
+        populateCalendar(events);
+        // document.getElementById('content').innerText = output;
+      }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+  </body>
+</html>
+<style>
+  * {
+      font-family: 'Cabin', sans-serif
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Opcional, para ocupar toda la altura de la pantalla */
+  }
+  :root {
+    --color: #ffffff;
+    --background:rgb(65, 243, 234);
+  }
+  
+  body{
+    font-family: 'Baloo Tamma', cursive;
+    background: var(--background);
+    color: var(--color);
+    transition: 2s;
+  }
+  
+  h1{
+    font-family: 'Baloo Tamma', cursive;
+    text-align: center;
+    width: 100%;
+    margin: 0px auto;
+    font-size: 80px;
+    letter-spacing: 5px;
+    top: 50%;
+    
+    margin-top: -40px;
+    transition: 2s;
+    
+    text-shadow: -1px -1px 0px var(--background),
+      3px 3px 0px var(--background),
+      6px 6px 0px #00000055;
+  }
+  .contenidoAddEven {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color:rgb(52, 159, 221);
+    text-align: center;  
+    border-radius: 20px; 
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255); 
+    
+  }
+  .boton-superior-derecha {
+      margin: 0px;
+      padding: 2px 8px;
+      background-color: rgb(216, 53, 129);
+      color: white;
+      border: none;
+      outline: 2px solid white;
+      border-radius: 4px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+      position: absolute;
+      top: 20px;
+      right: 20px;
+  }
+
+  .boton-superior-derecha:hover{
+      background-color: rgb(245, 153, 196);
+  }
+
+  p {
+      margin-block: 0px;
+  }
+  .title {
+      font-size: x-large;
+      font-weight: 500;
+      margin-top: 0px;
+  }
+
+  input {
+      border-radius: 4px;
+      border: none;
+      outline: 2px solid rgb(139, 139, 139);
+      padding: .5rem; 
+      margin-bottom: 1rem;
+  }
+  .save-btn {
+      font-size: large;
+      border-radius: 10px;
+      border: none;
+      outline: 2px solid white;
+      margin: auto;
+      padding: 0.5rem 1rem;
+      background-color: rgb(216, 53, 129);
+      color: white;
+  }
+
+  .save-btn:hover{
+      background-color: rgb(245, 153, 196);
+  }
+  </style>

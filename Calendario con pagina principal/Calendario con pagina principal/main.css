@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v2_2 {
+  width: 100%;
+  height: 768px;
+  background: rgba(0,31,64,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v9_152 {
+  width: 558px;
+  height: 593px;
+  background: rgba(0,131,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 76px;
+  left: 704px;
+}
+.v9_149 {
+  width: 718px;
+  height: 755px;
+  background: rgba(0,131,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 684px;
+  left: 564px;
+  transform: rotate(-160deg);
+}
+.v9_147 {
+  width: 688px;
+  height: 753px;
+  background: rgba(159,206,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 208px;
+  left: 185px;
+}
+.v9_146 {
+  width: 574px;
+  height: 406px;
+  background: rgba(71,255,188,1);
+  opacity: 1;
+  position: absolute;
+  top: 553px;
+  left: 55px;
+  border-radius: 50%;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.v6_5 {
+  width: 228px;
+  height: 259px;
+  background: url("../images/v6_5.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 65px;
+  left: 609px;
+  overflow: hidden;
+}
+.v9_143 {
+  width: 235px;
+  height: 286px;
+  background: url("../images/v9_143.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 496px;
+  left: 768px;
+  overflow: hidden;
+}
+.v9_145 {
+  width: 209px;
+  height: 293px;
+  background: url("../images/v9_145.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 244px;
+  left: 123px;
+  overflow: hidden;
+}
+.name {
+  color: #fff;
+}
+
+.btn-action {
+  font-family: 'Fira Mono', monospace;
+  color: #fff;
+  border: none;
+  background-color: #0017FF;
+  border-radius: 8px;
+  padding: 20px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  -webkit-box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
+  box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
+  
+}
