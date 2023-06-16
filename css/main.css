@@ -11,8 +11,8 @@ body {
   width: 1024px;
   height: 768px;
   opacity: 1;
-  position: relative;
-  padding: auto;
+  position: absolute;
+  top: 15%;
   
 }
 .v9_152 {
