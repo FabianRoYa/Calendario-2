@@ -1,10 +1,7 @@
 /*1024x768*/
 * {
-  position: relative;
-  width: 100%;
   box-sizing: border-box;
 }
-
 body {
   font-size: 14px;
   background-image: url('../images/Fondo.png');
@@ -66,7 +63,7 @@ body {
   color: #fff;
 }
 */
-/*Borrego arriba*/
+
 .v6_5 {
   width: 228px;
   height: 259px;
@@ -76,11 +73,10 @@ body {
   background-size: cover;
   opacity: 1;
   position: absolute;
-  top: 35px;
-  left: 640px;
+  top: 65px;
+  left: 609px;
   overflow: hidden;
 }
-/*Borrego Abajo */
 .v9_143 {
   width: 235px;
   height: 286px;
@@ -94,8 +90,6 @@ body {
   left: 768px;
   overflow: hidden;
 }
-
-/*Borrego Central*/
 .v9_145 {
   width: 209px;
   height: 293px;
@@ -105,8 +99,8 @@ body {
   background-size: cover;
   opacity: 1;
   position: absolute;
-  top: 280px;
-  left: 100px;
+  top: 244px;
+  left: 123px;
   overflow: hidden;
 }
 .name {
