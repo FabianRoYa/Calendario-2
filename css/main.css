@@ -8,13 +8,12 @@ body {
   background-size: cover;
 }
 .v2_2 {
-  width: 100%;
+  width: 1024px;
   height: 768px;
   opacity: 1;
   position: relative;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
+  padding: auto;
+  
 }
 .v9_152 {
   width: 558px;
