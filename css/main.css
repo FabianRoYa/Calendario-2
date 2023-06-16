@@ -2,7 +2,6 @@
 * {
   position: relative;
   width: 100%;
-  padding-top: 75%; /* Relación de aspecto 4:3 (3 dividido por 4 multiplicado por 100) */
   box-sizing: border-box;
 }
 
