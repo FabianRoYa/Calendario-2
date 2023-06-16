@@ -851,12 +851,11 @@ body {
   font-family: 'Fira Mono', monospace;
   color: #fff;
   border: none;
-  background-color: #0017FF;
+  background-color: #0015ff00;
   border-radius: 1px;
   padding: auto;
   font-size: 18px;
   cursor: pointer;
-  border: 2px solid #fff;
   -webkit-box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
   box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
   position: absolute;
