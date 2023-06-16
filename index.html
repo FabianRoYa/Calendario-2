@@ -5,8 +5,13 @@
         <link id="calendar" href="calendar.html" rel="import" /> 
         <link id="calendar" href="map.html" rel="import" /> 
         <title>Document</title>
+        <script>
+            function miFuncion() {
+                fetch("http://0.0.0.0:8000");
+            }
+        </script>
     </head>
-    <body>
+    <body onload="miFuncion()">
         <div class="v2_2">
             <div class="action-buttons">
                 <a href="calendar.html">
