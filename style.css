@@ -16,11 +16,13 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  border: none;
   transform: translate(-50%,-50%);
 }
 
 .action-buttons {
   position: absolute;
+  border: none;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -29,15 +31,13 @@
 
 button.btn-action {
   font-family: 'Fira Mono', monospace;
-  color: #755eb5;
   border: none;
-  background-color: #fff;
-  border-radius: 8px;
+  background-color: #ffffff00;
+  border-radius: -8px;
   padding: 20px 30px;
   font-size: 18px;
   cursor: pointer;
-  border: 2px solid #fff;
+  border: 2px solid #ffffff00;   
   -webkit-box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
   box-shadow: 0 10px 20px -5px rgba(19, 31, 51, .65);
-  
 }
