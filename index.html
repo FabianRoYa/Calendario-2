@@ -10,14 +10,15 @@
             function func(){
                 fetch("http://localhost:5000");
             }
+            function food(){
+                fetch("http://localhost:5000/food");
+            }
         </script>
     </head>
     <body onload="func()">
         <div class="v2_2">
             <div class="action-buttons">
-                <a href="calendar.html">
-                    <button class="btn-action" id="calendarbt"> <img src="./images/btnfood.png" height ="80" width="385" /></button>
-                </a>
+                    <button class="btn-action" id="calendarbt" onclick="food()"> <img src="./images/btnfood.png" height ="80" width="385" /></button>
             </div>
 
             <div class="action-buttons">
@@ -27,7 +28,7 @@
             </div>
 
             <div class="action-buttons">
-                <a href="calendar.html">
+                <a href="http://localhost:8000/workspace/Calendario%20con%20pagina%20principal/Calendario%20con%20pagina%20principal/calendar.html">
                     <button class="btn-action" id="map"> <img src="./images/btncalendario.png" height ="85" width="395" /></button>
                 </a>
             </div>
