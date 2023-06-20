@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Diseno</title>
+        <title>MapaMain</title>
+        <link href="../map.css" rel="stylesheet" />
+        <style>
+            .bg {
+                background-image: url("./diseno.jpeg");
+            }
+        </style>
     </head>
-    <body background="diseno.jpg">
-        <button onclick="irAOtroHTML()">Regresar</button>
+    <body>
+        <div class="bg"></div>
+        <button class="button-18" id="back" role="button" onclick="irAOtroHTML('https://fabianroya.github.io/Calendario-2/')">Regresar</button>
+        <script>
+            function irAOtroHTML(url) {
+                location.href = url;
+            }
+        </script>
     </body>
 </html>
