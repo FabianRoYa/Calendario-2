@@ -3,9 +3,20 @@
     <head>
         <title>MapaMain</title>
         <link href="./map.css" rel="stylesheet" />
+        <style>
+            .bg {
+                background-image: url("./map/MapaMain.png");
+            }
+        </style>
     </head>
     <body>
         <div class="bg"></div>
-        <button onclick="irAOtroHTML()">Regresar</button>
+        <button class="button-18" id="back" role="button" onclick="irAOtroHTML('https://fabianroya.github.io/Calendario-2/')">Regresar</button>
+        <button class="button-18" id="uno" role="button" onclick="irAOtroHTML('https://fabianroya.github.io/Calendario-2/map/E1')">Aulas 1</button>
+        <script>
+            function irAOtroHTML(url) {
+                location.href = url;
+            }
+        </script>
     </body>
 </html>
