@@ -15,7 +15,13 @@ body, html {
     background-size: cover;
 }
 
+
 .button-18 {
+    position: absolute;
+    left:30px;
+    z-index:1000;
+    float: right;
+    top: 20px;
     align-items: center;
     background-color: #0A66C2;
     border: 0;
@@ -25,13 +31,15 @@ body, html {
     cursor: pointer;
     display: inline-flex;
     font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 600;
     justify-content: center;
     line-height: 20px;
     max-width: 480px;
     min-height: 40px;
     min-width: 0px;
     overflow: hidden;
-    padding: 0px;
+    padding: 25px;
     text-align: center;
     touch-action: manipulation;
     transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
@@ -55,28 +63,4 @@ body, html {
     cursor: not-allowed;
     background: rgba(0, 0, 0, .08);
     color: rgba(0, 0, 0, .3);
-}
-
-#uno {
-    position: absolute;
-    right:200px;
-    z-index:1000;
-    float: right;
-    top:85px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-#back {
-    position: absolute;
-    left:30px;
-    z-index:1000;
-    float: right;
-    top: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    font-size: 16px;
-    font-weight: 600;
 }
